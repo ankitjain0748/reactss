@@ -6,7 +6,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { likePost, deletePost } from '../../../actions/posts';
 import useStyles from './styles';
@@ -17,6 +17,7 @@ const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const history = useParams();
   const classes = useStyles();
+  const navigate =useNavigate();
 
   const userId = user?.result.googleId || user?.result?._id;
   const hasLikedPost = post.likes.find((like) => like === userId);
@@ -47,7 +48,7 @@ const Post = ({ post, setCurrentId }) => {
   const openPost = (e) => {
     // dispatch(getPost(post._id, history));
 
-    history.push(`/posts/${post._id}`);
+    navigate(`/posts/${post._id}`);
   };
 
   return (

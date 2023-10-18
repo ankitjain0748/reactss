@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
-import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import PostDetails from './components/PostDetails/PostDetails';
 import Navbar from './components/Navbar/Navbar';
@@ -20,8 +20,7 @@ const App = () => {
           <Route path="/posts/:id" element={<PostDetails />} />
           <Route path='/creators/:name' element={<CreatorOrTag />} />
           <Route
-            path="/auth"
-            element={!user ? <Auth /> : <Home />}
+            path="/" element={<Auth/>}
           />
         </Routes>
       </Container>

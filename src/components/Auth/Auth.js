@@ -34,8 +34,10 @@ const navigate= useNavigate();
 
     if (isSignup) {
       dispatch(signup(form, history));
+
     } else {
       dispatch(signin(form, history));
+      navigate('/posts')
     }
   };
 
@@ -46,7 +48,7 @@ const navigate= useNavigate();
     try {
       dispatch({ type: AUTH, data: { result, token } });
 
-      history.push('/');
+      navigate('/posts');
     } catch (error) {
       console.log(error);
     }
