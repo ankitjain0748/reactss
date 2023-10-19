@@ -10,7 +10,14 @@ import useStyles from './styles';
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({ title: '', message: '', tags: [], selectedFile: '' });
-  const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
+
+  const post = useSelector((state) => {
+    if (currentId) {
+      const post = state.posts.posts.find((message) => message._id === currentId);
+      return post ? post : null;
+    }
+    return null;
+  });
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -25,6 +32,8 @@ const Form = ({ currentId, setCurrentId }) => {
     if (!post?.title) clear();
     if (post) setPostData(post);
   }, [post]);
+
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();

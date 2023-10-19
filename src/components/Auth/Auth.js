@@ -34,7 +34,6 @@ const navigate= useNavigate();
 
     if (isSignup) {
       dispatch(signup(form, history));
-
     } else {
       dispatch(signin(form, history));
       navigate('/posts')
